@@ -1,5 +1,6 @@
 import { Module, OnModuleInit, Logger } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { UsersModule } from './modules/users/users.module';
 import * as Joi from 'joi';
 
 @Module({
@@ -15,6 +16,7 @@ import * as Joi from 'joi';
         DB_NAME: Joi.string().required(),
       }),
     }),
+    UsersModule,
   ],
 })
 export class AppModule implements OnModuleInit {
