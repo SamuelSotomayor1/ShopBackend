@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Definición de Roles
+enum Role {
+  ADMIN
+  USER
+  CLIENT
+}
+
+model User {
+  // Identificador Único
+  id        String   @id @default(uuid())
+  
+  // Datos de credenciales
+  email     String   @unique
+  password  String   // HASH de Bcrypt
+  
+  // Perfil básico
+  name      String?
+  role      Role     @default(USER)
+  
+  // Auditoría
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
