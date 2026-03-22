@@ -41,7 +41,7 @@ export class UsersController {
     return this.usersService.update(id, updateUserDTO);
   }
 
-  @Delete('id')
+  @Delete(':id')
   async remove(@Param('id', ParseUUIDPipe) id: string) {
     return this.usersService.remove(id);
   }
