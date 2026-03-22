@@ -1,3 +1,4 @@
+import { Role } from '@prisma/client';
 import {
   IsEmail,
   IsEnum,
@@ -7,12 +8,6 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
-
-export enum UserRole {
-  ADMIN = 'admin',
-  USER = 'user',
-  CLIENT = 'client',
-}
 
 export class CreateUserDto {
   @IsEmail({}, { message: 'El formato del correo electrónico es inválido' })
@@ -30,7 +25,7 @@ export class CreateUserDto {
   @MinLength(2, { message: 'El nombre debe tener al menos 2 caracteres' })
   name?: string;
 
-  @IsEnum(UserRole, { message: 'El rol debe ser "admin" o "user"' })
+  @IsEnum(Role, { message: 'El rol debe ser "admin" o "user"' })
   @IsOptional()
-  role: UserRole;
+  role: Role;
 }
