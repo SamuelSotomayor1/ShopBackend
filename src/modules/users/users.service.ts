@@ -29,6 +29,7 @@ export class UsersService {
           ...userData,
           email: email.toLowerCase().trim(),
           password: hashedPassword,
+          role: Role.USER,
         },
         select: { id: true, email: true, name: true, role: true },
       });

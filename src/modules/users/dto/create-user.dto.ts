@@ -1,7 +1,5 @@
-import { Role } from '@prisma/client';
 import {
   IsEmail,
-  IsEnum,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -24,8 +22,4 @@ export class CreateUserDto {
   @IsOptional()
   @MinLength(2, { message: 'El nombre debe tener al menos 2 caracteres' })
   name?: string;
-
-  @IsEnum(Role, { message: 'El rol debe ser "admin" o "user"' })
-  @IsOptional()
-  role: Role;
 }
